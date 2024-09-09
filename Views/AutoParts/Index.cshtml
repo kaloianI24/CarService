@@ -1,0 +1,60 @@
+﻿    @using CarService.Models.AutoParts
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<AutoPartsViewModel>
+
+
+    <h1>Parts</h1>
+
+   <table class="table">
+       <thead>
+         <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Actions</th>
+           
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+         @foreach (var autoParts in Model)
+         {
+            <tr>
+
+             <th>@autoParts.Name</th>
+             <th>@autoParts.Price</th>
+             <th>@autoParts.Stock</th>      
+             <th>
+                 <button>
+                        <a                      
+                            asp-controller="AutoParts" 
+                            asp-action="Edit" 
+                            asp-route-id="@autoParts.Id">
+                            Edit  
+                        </a>
+                 </button>
+                 <button>
+                        <a                      
+                            asp-controller="AutoParts" 
+                            asp-action="Delete" 
+                            asp-route-id="@autoParts.Id">
+                            Delete 
+                        </a>
+                 </button>
+                 
+             </th>
+
+           </tr>
+         }
+    </tbody> 
+   </table>
+
+
+         
