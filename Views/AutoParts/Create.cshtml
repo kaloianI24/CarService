@@ -4,21 +4,22 @@
 @{
 }
 <h1>Create AutoParts</h1>
-<form method="post"  asp-controller="AutoParts" asp-action="Create">  
+<form method="post"  asp-controller="AutoParts" asp-action="Create">
     <p>
-        <label>Name</label>
-        <input type="text"  name="Name" />
-    </p>
-    <p>
-        <label>Price</label>
-        <input type="number" step="any" name="Price" />
-    </p>
-    <p>
-        <label>Stock</label>
-        <input type="text" step="any" name="Stock" />
+        <label for="name">Name</label>
+        <input type="text" id="name" name="Name" placeholder="Enter your name" />
     </p>
 
-    <button type="submit">Create</button>
+    <p>
+        <label for="price">Price</label>
+        <input type="number" step="any" name="Price" placeholder="Enter price" />
+    </p>
+    <p>
+        <label for="stock">Stock</labe>
+        <input type="text" step="any" name="Stock" placeholder="Enter stock" />
+    </p>
+
+    <button type="submit" class="btn btn-success mt-2">Add</button>
 
 
 

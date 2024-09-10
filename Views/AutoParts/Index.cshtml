@@ -1,60 +1,41 @@
-﻿    @using CarService.Models.AutoParts
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using CarService.Models.AutoParts
 @model IEnumerable<AutoPartsViewModel>
 
+<h1>Parts</h1>
 
-    <h1>Parts</h1>
-
-   <table class="table">
-       <thead>
-         <tr>
+<table class="table table-striped">
+    <thead>
+        <tr>
             <th>Name</th>
             <th>Price</th>
             <th>Stock</th>
             <th>Actions</th>
-           
-
         </tr>
-
     </thead>
-
     <tbody>
-
-         @foreach (var autoParts in Model)
-         {
+        @foreach (var autoPart in Model)
+        {
             <tr>
+                <td>@autoPart.Name</td>
+                <td>@autoPart.Price</td>
+                <td>@autoPart.Stock</td>
+                <td>
+                    <a class="btn btn-primary btn-sm"
+                       asp-controller="AutoParts"
+                       asp-action="Edit"
+                       asp-route-id="@autoPart.Id">
+                        Edit
+                    </a>
 
-             <th>@autoParts.Name</th>
-             <th>@autoParts.Price</th>
-             <th>@autoParts.Stock</th>      
-             <th>
-                 <button>
-                        <a                      
-                            asp-controller="AutoParts" 
-                            asp-action="Edit" 
-                            asp-route-id="@autoParts.Id">
-                            Edit  
-                        </a>
-                 </button>
-                 <button>
-                        <a                      
-                            asp-controller="AutoParts" 
-                            asp-action="Delete" 
-                            asp-route-id="@autoParts.Id">
-                            Delete 
-                        </a>
-                 </button>
-                 
-             </th>
-
-           </tr>
-         }
-    </tbody> 
-   </table>
-
-
-         
+                    <a class="btn btn-danger btn-sm"
+                       asp-controller="AutoParts"
+                       asp-action="Delete"
+                       asp-route-id="@autoPart.Id"
+                       onclick="return confirm('Are you sure you want to delete this item?')">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
