@@ -1,4 +1,6 @@
-﻿namespace CarService.Models.AutoParts
+﻿using CarService.Service;
+
+namespace CarService.Models.AutoParts
 {
     public class EditAutoPartsViewModel
     {
@@ -7,4 +9,5 @@
         public int Price { get; set; }
         public int  Stock { get; set; }
     }
+
 }

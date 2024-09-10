@@ -45,6 +45,7 @@ namespace CarService.Controllers
         public IActionResult Edit (int id)
         {
             var autoParts = autoPartstService.Get(id);
+
             return View(autoParts);
         }
 

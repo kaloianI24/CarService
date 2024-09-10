@@ -2,7 +2,9 @@
 using CarService.Models.AutoParts;
 using CarService.Repository.Interface;
 using CarService.Service.Interface;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarService.Service
 {
@@ -17,44 +19,49 @@ namespace CarService.Service
 
         public void Add(CreateAutoPartsViewModel autoparts)
         {
-            var autoPartsEntities = new AutoParts(autoparts.Name, autoparts.Price, autoparts.Stock);
-            autoPartsRepository.Add(autoPartsEntities);
-        }
-
-        public IEnumerable<AutoParts> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<AutoPartsViewModel> IAutoPartsService.GetAll()
-        {
-            var autoPartsEntities = autoPartsRepository.GetAll();
-            var autoParts = autoPartsEntities
-                .Select(autoParts => new AutoPartsViewModel(autoParts.Id, autoParts.Name, autoParts.Price, autoParts.Stock));
-
-            return autoParts;
-        }
-
-
-        public AutoPartsViewModel Get (int id)
-        {
-
-            var autoParts = autoPartsRepository.Get(id);
-
-            return new AutoPartsViewModel(autoParts.Id, autoParts.Name, autoParts.Price, autoParts.Stock);
-        }
-
-      public void Edit(EditAutoPartsViewModel autoParts)
-        {
-            var autoPartsEntity = new AutoParts(autoParts.Id, autoParts.Name, autoParts.Stock, autoParts.Stock  );
+            var autoPartsEntity = new AutoParts(autoparts.Name, autoparts.Price, autoparts.Stock);
             autoPartsRepository.Add(autoPartsEntity);
         }
 
+        // Implement the method for getting all AutoParts
+        public IEnumerable<AutoPartsViewModel> GetAll()
+        {
+            var autoPartsEntities = autoPartsRepository.GetAll();
+            var autoParts = autoPartsEntities
+                .Select(a => new AutoPartsViewModel(a.Id, a.Name, a.Price, a.Stock));
+            return autoParts;
+        }
+
+        public AutoPartsViewModel Get(int id)
+        {
+            var autoParts = autoPartsRepository.Get(id);
+            if (autoParts == null)
+            {
+                throw new KeyNotFoundException($"AutoPart with ID {id} not found.");
+            }
+            return new AutoPartsViewModel(autoParts.Id, autoParts.Name, autoParts.Price, autoParts.Stock);
+        }
+
+        public void Edit(EditAutoPartsViewModel autoParts)
+        {
+            var existingAutoParts = autoPartsRepository.Get(autoParts.Id);
+            if (existingAutoParts == null)
+            {
+                throw new KeyNotFoundException($"AutoPart with ID {autoParts.Id} not found.");
+            }
+
+            // Update the properties of the existing entity
+            existingAutoParts.Name = autoParts.Name;
+            existingAutoParts.Price = autoParts.Price;
+            existingAutoParts.Stock = autoParts.Stock;
+
+            // Save changes
+            autoPartsRepository.Edit(existingAutoParts);
+        }
+
         public void Delete(int id)
-            =>autoPartsRepository.Delete(id);
-
-
-
-        
+        {
+            autoPartsRepository.Delete(id);
+        }
     }
 }
