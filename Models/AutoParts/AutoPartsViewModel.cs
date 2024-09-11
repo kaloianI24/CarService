@@ -13,7 +13,6 @@
         Stock = stock;
     }
 
-    // Add this indexer
     public int this[int index]
     {
         get { return Id; }

@@ -50,12 +50,12 @@ namespace CarService.Service
                 throw new KeyNotFoundException($"AutoPart with ID {autoParts.Id} not found.");
             }
 
-            // Update the properties of the existing entity
+          
             existingAutoParts.Name = autoParts.Name;
             existingAutoParts.Price = autoParts.Price;
             existingAutoParts.Stock = autoParts.Stock;
 
-            // Save changes
+           
             autoPartsRepository.Edit(existingAutoParts);
         }
 

@@ -35,13 +35,13 @@ namespace CarService.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // If the model is not valid, return the view with validation errors
+           
             return View(autoParts);
         }
 
         public IActionResult Delete(int id)
         {
-            _autoPartsService.Delete(id);  // Fixed the typo here
+            _autoPartsService.Delete(id);  
 
             return RedirectToAction(nameof(Index));
         }
@@ -67,10 +67,8 @@ namespace CarService.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            // Return the view with validation errors if the model is not valid
             return View(autoParts);
         }
 
-        // Other actions...
     }
 }
