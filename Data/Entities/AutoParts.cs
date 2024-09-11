@@ -10,20 +10,20 @@ namespace CarService.Data.Entities
         [Required]
         public string Name { get; set; }
         [Required]
-        public int Price{ get; set; }
+        public double Price{ get; set; }
         [Required]
         public int Stock{ get; set; }
 
         
 
 
-        public AutoParts(int id , string name, int price, int stock)
+        public AutoParts(int id , string name, double price, int stock)
             :this (name , price, stock)
         {
             Id = id;
             
         }
-        public AutoParts(string name , int price , int stock)
+        public AutoParts(string name , double price , int stock)
         {
              Name = name;
             Price = price;

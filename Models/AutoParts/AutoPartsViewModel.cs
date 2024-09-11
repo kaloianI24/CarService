@@ -2,10 +2,10 @@
 {
     public int Id { get; set; }
     public string Name { get; set; }
-    public int Price { get; set; }
+    public double Price { get; set; }
     public int Stock { get; set; }
 
-    public AutoPartsViewModel(int id, string name, int price, int stock)
+    public AutoPartsViewModel(int id, string name, double price, int stock)
     {
         Id = id;
         Name = name;
