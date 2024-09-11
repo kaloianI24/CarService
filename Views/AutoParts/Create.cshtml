@@ -7,19 +7,19 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.Name)
-        @Html.EditorFor(model => model.Name, new { @class = "form-control", placeholder = "Enter part name" })
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter part name" } })
         @Html.ValidationMessageFor(model => model.Name)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Price)
-        @Html.EditorFor(model => model.Price, new { @class = "form-control", placeholder = "Enter price" })
+        @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter price" } })
         @Html.ValidationMessageFor(model => model.Price)
     </div>
 
     <div class="form-group">
         @Html.LabelFor(model => model.Stock)
-        @Html.EditorFor(model => model.Stock, new { @class = "form-control", placeholder = "Enter stock" })
+        @Html.EditorFor(model => model.Stock, new { htmlAttributes = new { @class = "form-control", placeholder = "Enter stock" } })
         @Html.ValidationMessageFor(model => model.Stock)
     </div>
 
